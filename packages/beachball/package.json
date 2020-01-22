@@ -41,7 +41,7 @@
     "@types/prompts": "~2.0.0",
     "@types/semver": "^6.0.0",
     "@types/tmp": "^0.1.0",
-    "@types/yargs-parser": "^13.0.0",
+    "@types/yargs-parser": "^15.0.0",
     "find-free-port": "~2.0.0",
     "jest": "^24.8.0",
     "lodash": "^4.17.15",
