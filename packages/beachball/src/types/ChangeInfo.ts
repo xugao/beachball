@@ -5,9 +5,9 @@ export interface ChangeInfo {
   comment: string;
   packageName: string;
   email: string;
-  commit: string;
   date: Date;
   dependentChangeType?: ChangeType;
+  commit?: string;
 }
 
 export type ChangeSet = Map<string, ChangeInfo>;

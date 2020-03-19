@@ -1,6 +1,6 @@
 import { ChangeInfo, ChangeType } from '../types/ChangeInfo';
 import { getChangedPackages } from './getChangedPackages';
-import { getRecentCommitMessages, getUserEmail, getCurrentHash } from '../git';
+import { getRecentCommitMessages, getUserEmail } from '../git';
 import prompts from 'prompts';
 import { getPackageInfos } from '../monorepo/getPackageInfos';
 import { prerelease } from 'semver';
@@ -83,7 +83,6 @@ export async function promptForChange(options: BeachballOptions) {
       ...response,
       packageName: pkg,
       email: getUserEmail(cwd) || 'email not defined',
-      commit: getCurrentHash(cwd) || 'hash not available',
       dependentChangeType: 'patch',
       date: new Date(),
     };
