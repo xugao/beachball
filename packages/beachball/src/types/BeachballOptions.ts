@@ -1,4 +1,5 @@
 import { ChangeType } from './ChangeInfo';
+import { PromptRepsonse } from '../changefile/promptForChange';
 
 export type BeachballOptions = CliOptions & RepoOptions & PackageOptions;
 
@@ -41,11 +42,13 @@ export interface RepoOptions {
   defaultNpmTag: string;
   groups?: VersionGroupOptions[];
   changelog?: ChangelogOptions;
+  customChangeFilePrompt?: CustomChangeFilePrompt;
 }
 
 export interface PackageOptions {
   disallowedChangeTypes: ChangeType[] | null;
   defaultNpmTag: string;
+  customChangeFilePrompt?: CustomChangeFilePrompt;
 }
 
 export interface VersionGroupOptions {
@@ -79,4 +82,16 @@ export interface ChangelogGroupOptions {
   exclude?: string | string[];
 
   changelogPath: string;
+}
+
+/**
+ * Prompt for change files.
+ */
+export type CustomChangeFilePrompt = (options: CustomChangeFilePromptOptions) => Promise<PromptRepsonse>;
+
+export interface CustomChangeFilePromptOptions {
+  /** recent commit messages from git log. */
+  recentCommitMessages: string[];
+
+  disallowedChangeTypes: ChangeType[] | null;
 }
